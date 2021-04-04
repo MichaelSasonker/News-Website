@@ -15,8 +15,6 @@ const NewsApp = () => {
     const [currDate, setCurrDate] = React.useState('');
     const [yestDate, setYestDate] = React.useState('');
 
-    // const baseURL = `https://newsapi.org/v2/top-headlines?language=en&from=${yestDate}&to=${currDate}&sortBy=popularity&apiKey=18d952814b5f465995b39e12e931f50e`;
-
     React.useEffect(() => {
         const PullData = async () => {
             let respone = await GetData(`${BASE_URL}&from=${yestDate}&to=${currDate}&sortBy=popularity${API_KEY}`);
