@@ -2,17 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import InputComp from '../input/input';
 
+import './header.css';
 
-const Header = () => {
+
+const Header = ({ newsData, changeData }) => {
 
     const [inputText, setInputText] = React.useState('');
 
     const handleChange = (e) => {
         setInputText(e.target.value);
+        changeData(e);
     }
-    
+
+
     return (
         <div className='header-cont'>
+            <div className='logo'></div>
             <div className='links-cont'>
                 <Link to='/'>
                     <InputComp inputType='button' inputValue='Home' /> 
@@ -29,7 +34,7 @@ const Header = () => {
             </div>
             <div className='search-cont'>
                 <input type='text' value={inputText} onChange={(e) => handleChange(e)} />
-                <InputComp inputType='button' inputValue='submit' /> 
+                {/* <InputComp inputType='button' inputValue='submit' ifClick={inputText}/>  */}
             </div>
         </div>
     );

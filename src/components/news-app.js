@@ -7,6 +7,8 @@ import GetData from './utilities_functions/get_data_function';
 import GetDate from './utilities_functions/get_date_function';
 import UseLocalStorage from './utilities_functions/use_local_storage_function';
 
+import './news-app.css';
+
 
 // https://newsapi.org/v2/everything?q=apple&from=2021-04-02&to=2021-04-02&sortBy=popularity&apiKey=18d952814b5f465995b39e12e931f50e
 // const BASE_URL = 'https://newsapi.org/v2/top-headlines?' + 'sources=bbc-news&' + 'apiKey=18d952814b5f465995b39e12e931f50e';
@@ -20,6 +22,7 @@ const NewsApp = () => {
     const [spinner, setSpinner] = React.useState(true);
     const [currDate, setCurrDate] = React.useState('');
     const [yestDate, setYestDate] = React.useState('');
+    const [searchInput, setSearchInput] = React.useState('');
 
     React.useEffect(() => {
         const PullData = async () => {
@@ -43,15 +46,20 @@ const NewsApp = () => {
         PullDate();
     }, [currDate, yestDate])
 
+    const handleChange = (e) => {
+        setSearchInput(e.target.value)
+        console.log(e.target.value);
+    }
+
     const DisplayData = (someData) => {
         // console.log(someData)
         return (
             <React.Fragment>
                 <BrowserRouter>
-                    <Header />
+                    <Header newsData={someData} changeData={(e) => handleChange(e)}/>
                     <div className='page-cont'>
                         <Route path='/' exact component={MainPage} > 
-                            <MainPage newsData={data}/>
+                            <MainPage newsData={someData} searchedInput={searchInput} />
                         </Route>
                         <Route path='/sport' exact component={SportPage} > 
                             <SportPage />
@@ -79,7 +87,7 @@ const NewsApp = () => {
     }
 
     return (
-        <div>
+        <div className='main-cont'>
             {DisplayData(data)}
         </div>
 

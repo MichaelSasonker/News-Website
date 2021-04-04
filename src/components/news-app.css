@@ -1,0 +1,19 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: max-content;
+    min-width: 60vw;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    background-image: linear-gradient(to bottom left ,#757F9A,#F2F2F2, #DBDBDB,  #EAEAEA);
+    position: relative;
+}
+
+.main-cont {
+    min-height: inherit;
+    min-width: inherit;
+}

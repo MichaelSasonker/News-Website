@@ -1,12 +1,20 @@
 import React from 'react';
 
-const MainPage = ({ newsData }) => {
+const MainPage = ({ newsData, searchedInput }) => {
 
     return (
         <div>
             {console.log(newsData)}
             {/* {spinner ? <div>loading...</div> : ''} */}
-            {newsData.map((obj) => {
+            {newsData.filter((element) => {
+                if (searchedInput === '') {
+                    return (element);
+                }
+                else if (element.title.toLowerCase().includes(searchedInput.toLowerCase())) {
+                    return (element);
+                }
+                })
+                .map((obj) => {
                 return (
                     <div key={obj.title}>
                         <div>Author: {obj.author}</div>
