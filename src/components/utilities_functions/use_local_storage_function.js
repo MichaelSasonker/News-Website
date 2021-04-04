@@ -32,3 +32,8 @@ function useLocalStorage(key, initialValue) {
         console.log(error);
       }
     };
+
+    return [storedValue, setValue];
+}
+
+export default useLocalStorage;
