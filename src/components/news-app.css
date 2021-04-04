@@ -1,3 +1,15 @@
+@font-face
+{
+    src: url(../fonts/Roboto/Roboto-Regular.ttf);
+    font-family: RobotoReg;
+}
+
+@font-face
+{
+    src: url(../fonts/Roboto/Roboto-Thin.ttf);
+    font-family: RobotoThin;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -7,13 +19,28 @@
 body {
     min-height: max-content;
     min-width: 60vw;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'RobotoReg';
     font-size: 14px;
-    background-image: linear-gradient(to bottom left ,#757F9A,#F2F2F2, #DBDBDB,  #EAEAEA);
+    /* background-image: linear-gradient(to bottom left ,#757F9A,#F2F2F2, #DBDBDB,  #EAEAEA); */
+    background: #fefefe;
     position: relative;
 }
 
 .main-cont {
     min-height: inherit;
     min-width: inherit;
+}
+
+input {
+    height: 30px;
+    width: 80px;
+    background: transparent;
+    border: none;
+    color: #0e0e0e;
+    font-size: 12px;
+    font-family: 'RobotoThin';
+}
+
+input:hover {
+    cursor: pointer;
 }

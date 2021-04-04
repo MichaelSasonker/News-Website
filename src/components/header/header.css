@@ -1,4 +1,31 @@
 .header-cont {
-    height: 20%;
-    backk
+    min-height: 55px;
+    padding: 5px 20px;
+    background-color: #e6eff1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
 }
+
+.logo {
+    height: 50px;
+    width: 80px;
+    background: url('../img/logo1.png') no-repeat center center/cover;
+}
+
+.links-cont {
+    height: max-content;
+}
+
+.search {
+    border: 1px solid #000;
+    border-radius: 5px;
+    height: 25px;
+    background-color: #fff;
+    font-family: 'RobotoReg';
+    color: #000;
+    width: 150px;
+    padding: 3px;
+}
+

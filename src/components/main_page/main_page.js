@@ -13,8 +13,8 @@ const MainPage = ({ newsData, searchedInput }) => {
                 else if (element.title.toLowerCase().includes(searchedInput.toLowerCase())) {
                     return (element);
                 }
-                })
-                .map((obj) => {
+            })
+            .map((obj) => {
                 return (
                     <div key={obj.title}>
                         <div>Author: {obj.author}</div>

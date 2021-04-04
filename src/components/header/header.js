@@ -33,7 +33,10 @@ const Header = ({ newsData, changeData }) => {
                 </Link>
             </div>
             <div className='search-cont'>
-                <input type='text' value={inputText} onChange={(e) => handleChange(e)} />
+                {/* <select>
+                    <option></option>
+                </select> */}
+                <input className='search' type='text' value={inputText} onChange={(e) => handleChange(e)} />
                 {/* <InputComp inputType='button' inputValue='submit' ifClick={inputText}/>  */}
             </div>
         </div>
