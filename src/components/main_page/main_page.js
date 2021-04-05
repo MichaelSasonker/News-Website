@@ -1,4 +1,5 @@
 import React from 'react';
+import Article from '../article/article';
 
 const MainPage = ({ newsData, searchedInput }) => {
 
@@ -16,14 +17,17 @@ const MainPage = ({ newsData, searchedInput }) => {
             })
             .map((obj) => {
                 return (
-                    <div key={obj.title}>
-                        <div>Author: {obj.author}</div>
-                        <div>Content: {obj.content}</div>
-                        <div>Publish At: {obj.publishAt}</div>
-                        <div>Title: {obj.title}</div>
-                        <a href={obj.url} target="_blank" rel="noreferrer">URL</a>
-                        <img src={obj.urlToImage} alt={obj.title} height='250px' width='250px'/>
+                    <div className='data-disp' key={obj.title} >
+                        <Article data={obj} />
                     </div>
+                    // <div key={obj.title}>
+                    //     <div>Author: {obj.author}</div>
+                    //     <div>Content: {obj.content}</div>
+                    //     <div>Publish At: {obj.publishAt}</div>
+                    //     <div>Title: {obj.title}</div>
+                    //     <a href={obj.url} target="_blank" rel="noreferrer">URL</a>
+                    //     <img src={obj.urlToImage} alt={obj.title} height='250px' width='250px'/>
+                    // </div>
                 );
             })}
 

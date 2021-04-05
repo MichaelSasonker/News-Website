@@ -1,0 +1,32 @@
+.data-disp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: inherit;
+    width: inherit;
+}
+
+.article-comp {
+    height: 350px;
+    width: 500px;
+    border: 1px solid #000;
+    color: #fff;
+    margin-left: 200px;
+}
+
+.img-cont {
+    height: inherit;
+}
+
+.par-cont {
+    /*RGBA!!!*/
+    background-color: #0F161D;
+    opacity: 0.85;
+}
+
+.subject-cont {
+    height: 30px;
+    width:fit-content;
+    background-color: #cf150b;
+}
