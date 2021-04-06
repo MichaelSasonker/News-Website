@@ -18,7 +18,6 @@ const LinksTable = ({ dataProp }) => {
                 resArr = [];
             }
         }
-        console.log(resArrOfArr)
         return (resArrOfArr);
     }
 

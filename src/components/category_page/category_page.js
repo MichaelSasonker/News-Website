@@ -5,7 +5,7 @@ const CategoryPage = ({ newsData, searchedInput }) => {
 
     return (
         <div>
-            {console.log(newsData)}
+            {/* {console.log(newsData)} */}
             {/* {spinner ? <div>loading...</div> : ''} */}
             {newsData.filter((element) => {
                 if (searchedInput === '') {

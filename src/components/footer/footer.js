@@ -4,6 +4,7 @@ import GetData from '../utilities_functions/get_data_function';
 import './footer.css';
 
 const BASE_URL = `https://newsapi.org/v2/sources?apiKey=18d952814b5f465995b39e12e931f50e`;
+let counter = 100;
 
 const Footer = () => {
 
@@ -11,8 +12,13 @@ const Footer = () => {
 
     React.useEffect(() => {
         (async () => {
-            let respone = await GetData(BASE_URL);
-            setSources(respone.sources);
+            try {
+                let respone = await GetData(BASE_URL);
+                setSources(respone.sources);
+            }
+            catch (err) {
+                console.log(err);
+            }
         })();
 
     }, []);
@@ -24,7 +30,7 @@ const Footer = () => {
                 <h4>News Links</h4>
                 {
                     sources.length > 0 
-                    ? <LinksTable key={sources[0].id} dataProp={sources} />
+                    ? <LinksTable key={counter++} dataProp={sources} />
                     : null
                 }
                 

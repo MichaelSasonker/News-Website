@@ -17,25 +17,30 @@ const Header = ({ newsData, changeData }) => {
 
     return (
         <div className='header-cont'>
-            <div className='logo'></div>
+            <Link to='/'>
+                <div className='logo'></div>
+            </Link>
             <div className='links-cont'>
                 <Link to='/'>
                     <InputComp inputType='button' inputValue='Home' /> 
                 </Link>
-                {/* <Link to='/news'>
-                    <input inputType='button' inputValue='News' />
-                </Link> */}
+                <Link to='/top-news'>
+                    <InputComp inputType='button' inputValue='Top-News' /> 
+                </Link>
                 <Link to='/sport'>
                     <InputComp inputType='button' inputValue='Sport' /> 
                 </Link>
                 <Link to='/health'>
                     <InputComp inputType='button' inputValue='Health' /> 
                 </Link>
+                <Link to='/science'>
+                    <InputComp inputType='button' inputValue='Science' /> 
+                </Link>
+                <Link to='/technology'>
+                    <InputComp inputType='button' inputValue='Technology' /> 
+                </Link>
             </div>
             <div className='search-cont'>
-                {/* <select>
-                    <option></option>
-                </select> */}
                 <input className='search' type='text' value={inputText} onChange={(e) => handleChange(e)} />
             </div>
         </div>

@@ -21,6 +21,5 @@ const GetDate = () => {
     return (result);
 }
 
-// GetDate()
 export default GetDate;
 

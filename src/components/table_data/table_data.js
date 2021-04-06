@@ -8,7 +8,7 @@ const TableData = ({ dataTableProp }) => {
             <td>
                 {dataTableProp.map((obj) => {
                     return (
-                        <li>
+                        <li key={obj.name}>
                             <a 
                                 key={obj.name}
                                 href={obj.url} 

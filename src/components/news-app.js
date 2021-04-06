@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './header/header';
 import MainPage from './main_page/main_page';
-import SportPage from './sport_page/sport_page';
+import CategoryPage from './category_page/category_page'
 import Footer from './footer/footer';
 import GetData from './utilities_functions/get_data_function';
 import GetDate from './utilities_functions/get_date_function';
@@ -16,6 +16,10 @@ import './news-app.css';
 // const BASE_URL = 'https://newsapi.org/v2/top-headlines?language=en&category=sports&from=2021-04-03&to=2021-04-04&apiKey=18d952814b5f465995b39e12e931f50e';
 const BASE_URL = `https://newsapi.org/v2/top-headlines?language=en`;
 const API_KEY =  `&apiKey=18d952814b5f465995b39e12e931f50e`;
+const CATEGORY_URL = 'https://newsapi.org/v2/top-headlines?language=en';
+
+const CATEGORIES_ARR = ['sport', 'health', 'science', 'technology'];
+
 // &from=${yestDate}&to=${currDate}&sortBy=popularity
 const NewsApp = () => {
 
@@ -24,14 +28,59 @@ const NewsApp = () => {
     const [currDate, setCurrDate] = React.useState('');
     const [yestDate, setYestDate] = React.useState('');
     const [searchInput, setSearchInput] = React.useState('');
+    const [sportData, setSportData] = React.useState([]);
+    const [healthData, setHealthData] = React.useState([]);
+    const [scienceData, setScienceData] = React.useState([]);
+    const [technologyData, setTechnologyData] = React.useState([]);
+
+    React.useEffect(() => {
+        
+        const PullData = async (category) => {
+            try {
+                let respone = await GetData(`${CATEGORY_URL}&category=${category}&sortBy=popularity${API_KEY}`);
+                if (respone) {
+                    setSpinner(false)
+                }
+                switch (category) {
+                    case 'sport':
+                        setSportData(respone.articles);
+                        return;
+                    case 'health':
+                        setHealthData(respone.articles);
+                        return;
+                    case 'science':
+                        setScienceData(respone.articles);
+                        return;
+                    case 'technology':
+                        setTechnologyData(respone.articles);
+                        return
+                    default:
+                        return;
+                }
+            }
+            catch(err) {
+                console.log(err);
+            }
+        };
+
+        CATEGORIES_ARR.forEach(async (category) => {
+            PullData(category);
+        });
+        // PullData();
+    }, []);
 
     React.useEffect(() => {
         const PullData = async () => {
-            let respone = await GetData(`${BASE_URL}&from=${yestDate}&to=${currDate}&sortBy=popularity${API_KEY}`);
-            if (respone) {
-                setSpinner(false)
+            try {
+                let respone = await GetData(`${BASE_URL}&from=${yestDate}&to=${currDate}&sortBy=popularity${API_KEY}`);
+                if (respone) {
+                    setSpinner(false)
+                }
+                setData(respone.articles);
             }
-            setData(respone.articles);
+            catch(err) {
+                console.log(err);
+            }
         };
 
         PullData();
@@ -49,36 +98,39 @@ const NewsApp = () => {
 
     const handleChange = (e) => {
         setSearchInput(e.target.value)
-        // console.log(e.target.value);
     }
 
     const DisplayData = (someData) => {
-        // console.log(someData)
         return (
             <React.Fragment>
                 <BrowserRouter>
                     <Header newsData={someData} changeData={(e) => handleChange(e)}/>
                     <div className='page-cont'>
                         <Route path='/' exact component={MainPage} > 
-                            <MainPage newsData={someData} searchedInput={searchInput} />
+                            {spinner ? <div className="loader">Loading...</div> 
+                            :<MainPage newsData={someData} searchedInput={searchInput} />} 
                         </Route>
-                        <Route path='/sport' exact component={SportPage} > 
-                            <SportPage />
+                        <Route path='/top-news' exact component={CategoryPage} > 
+                            {spinner ? <div className="loader">Loading...</div> 
+                            :<CategoryPage newsData={someData} searchedInput={searchInput} />} 
                         </Route>
-                        {/* {spinner ? <div>loading...</div> : ''}
-                        {someData.map((obj) => {
-                        return (
-                            <div key={obj.title}>
-                                <div>Author: {obj.author}</div>
-                                <div>Content: {obj.content}</div>
-                                <div>Publish At: {obj.publishAt}</div>
-                                <div>Title: {obj.title}</div>
-                                <a href={obj.url} target="_blank" rel="noreferrer">URL</a>
-                                <img src={obj.urlToImage} alt={obj.title} height='250px' width='250px'/>
-                            </div>
-                        )
-                        })} */}
-
+                        <Route path='/sport' exact component={CategoryPage} > 
+                            {spinner ? <div className="loader">Loading...</div> 
+                            :<CategoryPage newsData={sportData} searchedInput={searchInput} />} 
+                        </Route>
+                        <Route path='/health' exact component={CategoryPage} > 
+                            {spinner ? <div className="loader">Loading...</div> 
+                            :<CategoryPage newsData={healthData} searchedInput={searchInput} />} 
+                        </Route>
+                        <Route path='/science' exact component={CategoryPage} > 
+                            {spinner ? <div className="loader">Loading...</div> 
+                            :<CategoryPage newsData={scienceData} searchedInput={searchInput} />} 
+                        </Route>
+                        <Route path='/technology' exact component={CategoryPage} > 
+                            {spinner ? <div className="loader">Loading...</div> 
+                            :<CategoryPage newsData={technologyData} searchedInput={searchInput} />} 
+                        </Route>
+                        {/* {spinner ? <div>loading...</div> : ''} */}
                     </div>
                     <Footer />
                 </BrowserRouter>
