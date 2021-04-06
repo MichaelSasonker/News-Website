@@ -49,7 +49,7 @@ const NewsApp = () => {
 
     const handleChange = (e) => {
         setSearchInput(e.target.value)
-        console.log(e.target.value);
+        // console.log(e.target.value);
     }
 
     const DisplayData = (someData) => {

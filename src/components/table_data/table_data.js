@@ -8,13 +8,16 @@ const TableData = ({ dataTableProp }) => {
             <td>
                 {dataTableProp.map((obj) => {
                     return (
-                        <a 
-                            href={obj.url} 
-                            target='_blank' 
-                            rel="noreferrer"
-                        >
-                            {obj.name}
-                        </a>
+                        <li>
+                            <a 
+                                key={obj.name}
+                                href={obj.url} 
+                                target='_blank' 
+                                rel="noreferrer"
+                            >
+                                {obj.name}
+                            </a>
+                        </li>
                     );
                 })}
             </td>

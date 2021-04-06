@@ -2,5 +2,14 @@ td {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
+}
+
+li {
+    margin: 3px 4px;
+}
+li a {
+    text-decoration: none;
+    font-size: 9px;
+    color: #526474;
 }

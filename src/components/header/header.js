@@ -37,7 +37,6 @@ const Header = ({ newsData, changeData }) => {
                     <option></option>
                 </select> */}
                 <input className='search' type='text' value={inputText} onChange={(e) => handleChange(e)} />
-                {/* <InputComp inputType='button' inputValue='submit' ifClick={inputText}/>  */}
             </div>
         </div>
     );

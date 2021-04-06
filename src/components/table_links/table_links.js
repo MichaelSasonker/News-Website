@@ -3,29 +3,31 @@ import TableData from '../table_data/table_data';
 import './table_links.css'
 
 const LinksTable = ({ dataProp }) => {
-    // console.log(dataProp)
-    const [tableDataArr, setTableDataArr] = React.useState([]);
+    const [tableDataArr, setTableDataArr] = React.useState(dataProp);
     const [flag, setFlag] = React.useState(false);
 
-    React.useEffect(()=> {
-        const ArrangeFunction = () => {
-            let resArr = [];
-            let resArrOfArr = [];
+    const ArrangeFunction = () => {
+        let resArr = [];
+        let resArrOfArr = [];
 
-            for (let i = 0; i < dataProp.length; ++i) {
-                resArr.push(dataProp[i]);
+        for (let i = 0; i < dataProp.length; ++i) {
+            resArr.push(dataProp[i]);
 
-                if ((i % 10 === 0) && (i !== 0)) {
-                    resArrOfArr.push(resArr)
-                    resArr.splice(0, resArr.length);
-                }
+            if ((i % 10 === 0) && (i !== 0)) {
+                resArrOfArr.push(resArr)
+                resArr = [];
             }
-            console.log(resArrOfArr)
-            setTableDataArr(resArrOfArr);
         }
+        console.log(resArrOfArr)
+        return (resArrOfArr);
+    }
 
-        ArrangeFunction();
-        setFlag(true);
+    React.useEffect(()=> {
+
+        setTableDataArr(ArrangeFunction());
+        if(tableDataArr.length > 0) {
+            setFlag(true);
+        }
 
     }, [flag]);
 
@@ -35,16 +37,17 @@ const LinksTable = ({ dataProp }) => {
             <table className='footer-links'>
                 <tbody>
                     <tr className='table-row'>
-                        {
-                            flag 
-                            ? (tableDataArr.map((arr) => {
-                                console.log(arr)
-                                return (
-                                    <TableData key={arr.name} dataTableProp={arr} />
-                                );
-                            }))
-                            : <td><a>aaaa</a></td>
-                        }
+                        <ul>
+                            {
+                                flag 
+                                ? (tableDataArr.map(arr => {
+                                    return (
+                                        <TableData key={arr.name} dataTableProp={arr} />
+                                    );
+                                }))
+                                : <td><a href='#' >No Sources</a></td>
+                            }
+                        </ul>
                     </tr>
                 </tbody>
             </table>
