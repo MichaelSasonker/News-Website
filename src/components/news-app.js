@@ -18,7 +18,7 @@ const BASE_URL = `https://newsapi.org/v2/top-headlines?language=en`;
 const API_KEY =  `&apiKey=18d952814b5f465995b39e12e931f50e`;
 const CATEGORY_URL = 'https://newsapi.org/v2/top-headlines?language=en';
 
-const CATEGORIES_ARR = ['sport', 'health', 'science', 'technology'];
+const CATEGORIES_ARR = ['sport', 'health', 'science', 'technology', 'business', 'entertainment'];
 
 // &from=${yestDate}&to=${currDate}&sortBy=popularity
 const NewsApp = () => {
@@ -32,6 +32,9 @@ const NewsApp = () => {
     const [healthData, setHealthData] = React.useState([]);
     const [scienceData, setScienceData] = React.useState([]);
     const [technologyData, setTechnologyData] = React.useState([]);
+    const [businessData, setBusinessData] = React.useState([]);
+    const [entertainmentData, setEntertainmentData] = React.useState([]);
+    const [allData, setAllData] = ([]);
 
     React.useEffect(() => {
         
@@ -53,7 +56,13 @@ const NewsApp = () => {
                         return;
                     case 'technology':
                         setTechnologyData(respone.articles);
-                        return
+                        return;
+                    case 'business':
+                        setBusinessData(respone.articles);
+                        return;
+                    case 'entertainment':
+                        setEntertainmentData(respone.articles);
+                        return;
                     default:
                         return;
                 }
@@ -106,29 +115,40 @@ const NewsApp = () => {
                 <BrowserRouter>
                     <Header newsData={someData} changeData={(e) => handleChange(e)}/>
                     <div className='page-cont'>
-                        <Route path='/' exact component={MainPage} > 
+                        <Route path='/' exact  > 
                             {spinner ? <div className="loader">Loading...</div> 
-                            :<MainPage newsData={someData} searchedInput={searchInput} />} 
+                            :<MainPage 
+                                newsData={[sportData, healthData, scienceData, technologyData, businessData, entertainmentData]} 
+                                searchedInput={searchInput} 
+                            />} 
                         </Route>
-                        <Route path='/top-news' exact component={CategoryPage} > 
+                        <Route path='/top-news' exact > 
                             {spinner ? <div className="loader">Loading...</div> 
                             :<CategoryPage newsData={someData} searchedInput={searchInput} />} 
                         </Route>
-                        <Route path='/sport' exact component={CategoryPage} > 
+                        <Route path='/sport' exact  > 
                             {spinner ? <div className="loader">Loading...</div> 
                             :<CategoryPage newsData={sportData} searchedInput={searchInput} />} 
                         </Route>
-                        <Route path='/health' exact component={CategoryPage} > 
+                        <Route path='/health' exact  > 
                             {spinner ? <div className="loader">Loading...</div> 
                             :<CategoryPage newsData={healthData} searchedInput={searchInput} />} 
                         </Route>
-                        <Route path='/science' exact component={CategoryPage} > 
+                        <Route path='/science' exact  > 
                             {spinner ? <div className="loader">Loading...</div> 
                             :<CategoryPage newsData={scienceData} searchedInput={searchInput} />} 
                         </Route>
-                        <Route path='/technology' exact component={CategoryPage} > 
+                        <Route path='/technology' exact  > 
                             {spinner ? <div className="loader">Loading...</div> 
                             :<CategoryPage newsData={technologyData} searchedInput={searchInput} />} 
+                        </Route>
+                        <Route path='/business' exact  > 
+                            {spinner ? <div className="loader">Loading...</div> 
+                            :<CategoryPage newsData={businessData} searchedInput={searchInput} />} 
+                        </Route>
+                        <Route path='/entertainment' exact  > 
+                            {spinner ? <div className="loader">Loading...</div> 
+                            :<CategoryPage newsData={entertainmentData} searchedInput={searchInput} />} 
                         </Route>
                         {/* {spinner ? <div>loading...</div> : ''} */}
                     </div>

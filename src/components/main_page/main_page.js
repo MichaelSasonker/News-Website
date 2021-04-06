@@ -1,13 +1,13 @@
 import React from 'react';
 import Article from '../article/article';
 
-const CategoryPage = ({ newsData, searchedInput }) => {
+const MainPage = ({ newsData, searchedInput }) => {
 
     return (
         <div>
             {console.log(newsData)}
             {/* {spinner ? <div>loading...</div> : ''} */}
-            {newsData.filter((element) => {
+            {/* {newsData.filter((element) => {
                 if (searchedInput === '') {
                     return (element);
                 }
@@ -22,10 +22,10 @@ const CategoryPage = ({ newsData, searchedInput }) => {
                         <Article data={obj} />
                     </div>
                 );
-            })}
+            })} */}
 
         </div>
     )
 }
 
-export default CategoryPage;
+export default MainPage;

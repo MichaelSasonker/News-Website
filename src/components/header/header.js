@@ -39,6 +39,12 @@ const Header = ({ newsData, changeData }) => {
                 <Link to='/technology'>
                     <InputComp inputType='button' inputValue='Technology' /> 
                 </Link>
+                <Link to='/business'>
+                    <InputComp inputType='button' inputValue='Business' /> 
+                </Link>
+                <Link to='/entertainment'>
+                    <InputComp inputType='button' inputValue='Entertainment' /> 
+                </Link>
             </div>
             <div className='search-cont'>
                 <input className='search' type='text' value={inputText} onChange={(e) => handleChange(e)} />

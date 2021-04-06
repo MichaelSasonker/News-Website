@@ -10,7 +10,7 @@ const Article = ({ data }) => {
         if (img === null) {
             setImg(logoImage)
         }
-    }, []);
+    }, [img]);
 
     return (
         <div className='article-comp'>
