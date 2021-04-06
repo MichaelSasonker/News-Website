@@ -2,7 +2,7 @@
     min-height: 55px;
     padding: 5px 20px;
     background-color: #e6eff1;
-    /* background-color: #0a089c; */
+    background-color: rgba(15, 22, 29, 0.95);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,12 +11,13 @@
 
 .logo {
     height: 55px;
-    width: 90px;
-    background: url('../img/logo-2.png') no-repeat center center/cover;
+    width: 110px;
+    background: url('../img/logo-4.png') no-repeat center center/cover;
 }
 
 .links-cont {
     height: max-content;
+    color: #fefefe;
 }
 
 .search {

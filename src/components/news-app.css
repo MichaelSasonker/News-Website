@@ -36,7 +36,8 @@ input {
     width: 80px;
     background: transparent;
     border: none;
-    color: #0e0e0e;
+    color: #fefefe;
+
     font-size: 12px;
     font-family: 'RobotoThin';
 }

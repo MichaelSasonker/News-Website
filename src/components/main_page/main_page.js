@@ -1,11 +1,27 @@
 import React from 'react';
-import Article from '../article/article';
+import { Link } from 'react-router-dom';
+import Carousel from '../carousel/carousel';
+import './main_page.css';
 
-const MainPage = ({ newsData, searchedInput }) => {
+const MainPage = ({ newsData, searchedInput, categoryArr }) => {
 
     return (
         <div>
-            {console.log(newsData)}
+
+            {
+                newsData.map((arrOfObj,index) => {
+                    {console.log(index)}
+                    return (
+                        <React.Fragment >
+                                <h2 className='carousel-header'>{categoryArr[index].toUpperCase()}</h2>
+                            <Link to={`/${categoryArr[index]}`}>
+                                <Carousel data={arrOfObj} />
+                            </Link>
+                        </React.Fragment>
+                    )
+                })
+            }
+
             {/* {spinner ? <div>loading...</div> : ''} */}
             {/* {newsData.filter((element) => {
                 if (searchedInput === '') {

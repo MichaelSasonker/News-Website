@@ -1,0 +1,43 @@
+.carousel {
+    width: 100%;
+    /* height: 700px; */
+    margin-top: 50px;
+}
+
+.carouselInner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.carouselInner .left {
+    flex: 5%;
+    height: 350px;
+    width: 50px;
+    background-color: #fefefe;
+    display: grid;
+    place-items: center;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    left: 283px;
+}
+
+.carouselInner .right {
+    flex: 5%;
+    height: 350px;
+    width: 50px;
+    background-color: #fefefe;
+    display: grid;
+    place-items: center;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: +227px;
+}
+
+.carouselInner .right:hover,
+.carouselInner .left:hover {
+    background-color: rgba(15, 22, 29, 1);
+
+}

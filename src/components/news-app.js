@@ -15,7 +15,8 @@ import './news-app.css';
 // const BASE_URL = 'https://newsapi.org/v2/top-headlines?' + 'sources=bbc-news&' + 'apiKey=18d952814b5f465995b39e12e931f50e';
 // const BASE_URL = 'https://newsapi.org/v2/top-headlines?language=en&category=sports&from=2021-04-03&to=2021-04-04&apiKey=18d952814b5f465995b39e12e931f50e';
 const BASE_URL = `https://newsapi.org/v2/top-headlines?language=en`;
-const API_KEY =  `&apiKey=18d952814b5f465995b39e12e931f50e`;
+// const API_KEY =  `&apiKey=18d952814b5f465995b39e12e931f50e`;
+const API_KEY = `&apiKey=9892ff9432704002b7131bcfd7769a39`;
 const CATEGORY_URL = 'https://newsapi.org/v2/top-headlines?language=en';
 
 const CATEGORIES_ARR = ['sport', 'health', 'science', 'technology', 'business', 'entertainment'];
@@ -119,7 +120,8 @@ const NewsApp = () => {
                             {spinner ? <div className="loader">Loading...</div> 
                             :<MainPage 
                                 newsData={[sportData, healthData, scienceData, technologyData, businessData, entertainmentData]} 
-                                searchedInput={searchInput} 
+                                searchedInput={searchInput}
+                                categoryArr={CATEGORIES_ARR} 
                             />} 
                         </Route>
                         <Route path='/top-news' exact > 
