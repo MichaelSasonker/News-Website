@@ -12,6 +12,7 @@ const MainPage = ({ newsData, searchedInput }) => {
                     return (element);
                 }
                 else if (element.title.toLowerCase().includes(searchedInput.toLowerCase())) {
+                    //TODO display if no has result=> NO RESULT!!! 
                     return (element);
                 }
             })
@@ -20,14 +21,6 @@ const MainPage = ({ newsData, searchedInput }) => {
                     <div className='data-disp' key={obj.title} >
                         <Article data={obj} />
                     </div>
-                    // <div key={obj.title}>
-                    //     <div>Author: {obj.author}</div>
-                    //     <div>Content: {obj.content}</div>
-                    //     <div>Publish At: {obj.publishAt}</div>
-                    //     <div>Title: {obj.title}</div>
-                    //     <a href={obj.url} target="_blank" rel="noreferrer">URL</a>
-                    //     <img src={obj.urlToImage} alt={obj.title} height='250px' width='250px'/>
-                    // </div>
                 );
             })}
 
