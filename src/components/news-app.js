@@ -11,10 +11,6 @@ import UseLocalStorage from './utilities_functions/use_local_storage_function';
 
 import './news-app.css';
 
-
-// https://newsapi.org/v2/everything?q=apple&from=2021-04-02&to=2021-04-02&sortBy=popularity&apiKey=18d952814b5f465995b39e12e931f50e
-// const BASE_URL = 'https://newsapi.org/v2/top-headlines?' + 'sources=bbc-news&' + 'apiKey=18d952814b5f465995b39e12e931f50e';
-// const BASE_URL = 'https://newsapi.org/v2/top-headlines?language=en&category=sports&from=2021-04-03&to=2021-04-04&apiKey=18d952814b5f465995b39e12e931f50e';
 const BASE_URL = `https://newsapi.org/v2/top-headlines?language=en`;
 const CATEGORY_URL = `https://newsapi.org/v2/top-headlines?language=en`;
 // const API_KEY =  `&apiKey=18d952814b5f465995b39e12e931f50e`;
@@ -23,7 +19,6 @@ const API_KEY = `&apiKey=85316c83db2946349a3c90297fec2517`;
 
 const CATEGORIES_ARR = ['sport', 'health', 'science', 'technology', 'business', 'entertainment'];
 
-// &from=${yestDate}&to=${currDate}&sortBy=popularity
 const NewsApp = () => {
 
     const [data, setData] = React.useState([]);
@@ -38,9 +33,6 @@ const NewsApp = () => {
     const [businessData, setBusinessData] = React.useState([]);
     const [entertainmentData, setEntertainmentData] = React.useState([]);
     const [articleData, setArticleData] = React.useState([]);
-
-    // const [allData, setAllData] = ([]);
-
 
     React.useEffect(() => {
         
@@ -81,7 +73,6 @@ const NewsApp = () => {
         CATEGORIES_ARR.forEach(async (category) => {
             PullData(category);
         });
-        // PullData();
     }, []);
 
     React.useEffect(() => {
@@ -116,7 +107,6 @@ const NewsApp = () => {
     }
 
     const handleClick = (dataObj) => {
-        console.log(dataObj);
         setArticleData(dataObj);
     }
 
@@ -131,12 +121,13 @@ const NewsApp = () => {
                             :<MainPage 
                                 newsData={[sportData, healthData, scienceData, technologyData, businessData, entertainmentData]} 
                                 searchedInput={searchInput}
-                                categoryArr={CATEGORIES_ARR} 
+                                categoryArr={CATEGORIES_ARR}
+                                isClicked={handleClick} 
                             />} 
                         </Route>
                         <Route path='/top-news' exact > 
                             {spinner ? <div className="loader">Loading...</div> 
-                            :<CategoryPage newsData={data} searchedInput={searchInput} />} 
+                            :<CategoryPage newsData={data} searchedInput={searchInput} categoryName={CATEGORIES_ARR[0]} isClicked={handleClick}/>} 
                         </Route>
                         <Route path='/sport' exact  > 
                             {spinner ? <div className="loader">Loading...</div> 
@@ -162,34 +153,25 @@ const NewsApp = () => {
                             {spinner ? <div className="loader">Loading...</div> 
                             :<CategoryPage newsData={entertainmentData} searchedInput={searchInput} categoryName={CATEGORIES_ARR[5]} isClicked={handleClick}/>} 
                         </Route>
-                        {}
                         {   
                             articleData.length > 0 
                             ? <Route path={`/${articleData[0].categoryName}/${articleData[0].data.source.name}}`} exact  > 
                                 {spinner ? <div className="loader">Loading...</div> 
                                 :<ArticlePage articleData={articleData}  />} 
                               </Route>
-                            : <div>y</div> 
+                            : <div></div> 
                         }
-                        {/* <Route path={`/${articleData[0].categoryName}/${articleData[0].data.source.name}}`} exact  > 
-                            {spinner ? <div className="loader">Loading...</div> 
-                            :<ArticlePage articleData={articleData}  />} 
-                        </Route> */}
-                        {/* {spinner ? <div>loading...</div> : ''} */}
                     </div>
                     <Footer />
                 </BrowserRouter>
-
-
             </React.Fragment>
-        )
+        );
     }
 
     return (
         <div className='main-cont'>
             {DisplayData()}
         </div>
-
     );
 }
 

@@ -1,10 +1,15 @@
 import React from 'react';
 import Article from '../article/article';
-import './carousel.css'
+import { Link } from 'react-router-dom';
+import './carousel.css';
 
-const Carousel = ({ data }) => {
+const Carousel = ({ data, isClicked, categoryName }) => {
 
     const [currArticle, setCurrArticle] = React.useState(0);
+
+    const handleClicked = (dataObj) => {
+        isClicked(dataObj);
+    }
 
     return (
         <div className="carousel">
@@ -16,18 +21,21 @@ const Carousel = ({ data }) => {
                             <div className="carousel">
                                 <div className="carouselInner" >
                                     <div className="left" onClick={() => {currArticle > 0 && setCurrArticle(currArticle - 1);}}>
-                                        <i class="fas fa-chevron-left"></i>
+                                        <i className="fas fa-chevron-left"></i>
                                     </div>
-                                    <Article data={obj} key={obj.source.name}/>
+                                    <Link to={`/${categoryName}/${obj.source.name}}`}>
+                                        <Article data={obj} key={obj.source.name} objClicked={handleClicked} categoryName={categoryName}/>
+
+                                    </Link>
                                     <div className="right" onClick={() => {currArticle < data.length - 1 && setCurrArticle(currArticle + 1);}}>
-                                        <i class="fas fa-chevron-right"></i>
+                                        <i className="fas fa-chevron-right"></i>
                                     </div>
                                 </div>
                             </div>
                         );
                     }
                   })
-                : 'aaaa'
+                : ''
             }
         </div>
     );
