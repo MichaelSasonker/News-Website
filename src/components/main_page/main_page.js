@@ -10,13 +10,12 @@ const MainPage = ({ newsData, searchedInput, categoryArr }) => {
 
             {
                 newsData.map((arrOfObj,index) => {
-                    {console.log(index)}
                     return (
                         <React.Fragment >
-                                <h2 className='carousel-header'>{categoryArr[index].toUpperCase()}</h2>
                             <Link to={`/${categoryArr[index]}`}>
-                                <Carousel data={arrOfObj} />
+                                <h2 className='carousel-header'>{categoryArr[index].toUpperCase()}</h2>
                             </Link>
+                            <Carousel data={arrOfObj} />
                         </React.Fragment>
                     )
                 })

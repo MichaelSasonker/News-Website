@@ -20,7 +20,7 @@
     color: white;
     cursor: pointer;
     position: absolute;
-    left: 283px;
+    left: 331px;
 }
 
 .carouselInner .right {
@@ -33,7 +33,7 @@
     color: white;
     cursor: pointer;
     position: absolute;
-    right: +227px;
+    right: +339px;
 }
 
 .carouselInner .right:hover,

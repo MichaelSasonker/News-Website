@@ -1,7 +1,13 @@
 import React from 'react';
 import Article from '../article/article';
+import ArticlePage from '../article_page/article_page';
+import { Link } from 'react-router-dom';
 
-const CategoryPage = ({ newsData, searchedInput }) => {
+const CategoryPage = ({ newsData, searchedInput, categoryName, isClicked }) => {
+
+    const handleClicked = (dataObj) => {
+        isClicked(dataObj);
+    }
 
     return (
         <div>
@@ -17,7 +23,9 @@ const CategoryPage = ({ newsData, searchedInput }) => {
             .map((obj) => {
                 return (
                     <div className='data-disp' key={obj.title} >
-                        <Article data={obj} />
+                        <Link to={`/${categoryName}/${obj.source.name}}`}>
+                            <Article data={obj} categoryName={categoryName} objClicked={handleClicked}/>
+                        </Link>
                     </div>
                 );
             })}

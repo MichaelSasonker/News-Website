@@ -1,8 +1,16 @@
 import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './article.css';
 import logoImage from '../img/logo-2.png';
 
-const Article = ({ data }) => {
+
+{/* <BrowserRouter>
+<Route path={`/${categoryName}/${obj.source.name}`}>
+
+</Route>
+</BrowserRouter> */}
+
+const Article = ({ data, categoryName, objClicked }) => {
 
     const [img, setImg] = React.useState(data.urlToImage);
 
@@ -12,8 +20,13 @@ const Article = ({ data }) => {
         }
     }, [img]);
 
+    const handleClick = (e) => {
+        let dataObj = [{'data': data, 'categoryName': categoryName}];
+        objClicked(dataObj);
+    }
+
     return (
-        <div className='article-comp'>
+        <div className='article-comp' onClick={(e) => {handleClick(e)}}>
             <div 
                 className='img-cont' 
                 style={{ background: `url(${img}) no-repeat center center/cover` }}>
@@ -30,7 +43,7 @@ const Article = ({ data }) => {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Article;

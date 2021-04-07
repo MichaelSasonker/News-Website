@@ -5,7 +5,7 @@ import InputComp from '../input/input';
 import './header.css';
 
 
-const Header = ({ newsData, changeData }) => {
+const Header = ({ changeData }) => {
 
     const [inputText, setInputText] = React.useState('');
 

@@ -2,7 +2,8 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from './header/header';
 import MainPage from './main_page/main_page';
-import CategoryPage from './category_page/category_page'
+import CategoryPage from './category_page/category_page';
+import ArticlePage from './article_page/article_page';
 import Footer from './footer/footer';
 import GetData from './utilities_functions/get_data_function';
 import GetDate from './utilities_functions/get_date_function';
@@ -15,9 +16,10 @@ import './news-app.css';
 // const BASE_URL = 'https://newsapi.org/v2/top-headlines?' + 'sources=bbc-news&' + 'apiKey=18d952814b5f465995b39e12e931f50e';
 // const BASE_URL = 'https://newsapi.org/v2/top-headlines?language=en&category=sports&from=2021-04-03&to=2021-04-04&apiKey=18d952814b5f465995b39e12e931f50e';
 const BASE_URL = `https://newsapi.org/v2/top-headlines?language=en`;
+const CATEGORY_URL = `https://newsapi.org/v2/top-headlines?language=en`;
 // const API_KEY =  `&apiKey=18d952814b5f465995b39e12e931f50e`;
-const API_KEY = `&apiKey=9892ff9432704002b7131bcfd7769a39`;
-const CATEGORY_URL = 'https://newsapi.org/v2/top-headlines?language=en';
+// const API_KEY = `&apiKey=9892ff9432704002b7131bcfd7769a39`;
+const API_KEY = `&apiKey=85316c83db2946349a3c90297fec2517`;
 
 const CATEGORIES_ARR = ['sport', 'health', 'science', 'technology', 'business', 'entertainment'];
 
@@ -35,7 +37,10 @@ const NewsApp = () => {
     const [technologyData, setTechnologyData] = React.useState([]);
     const [businessData, setBusinessData] = React.useState([]);
     const [entertainmentData, setEntertainmentData] = React.useState([]);
-    const [allData, setAllData] = ([]);
+    const [articleData, setArticleData] = React.useState([]);
+
+    // const [allData, setAllData] = ([]);
+
 
     React.useEffect(() => {
         
@@ -110,11 +115,16 @@ const NewsApp = () => {
         setSearchInput(e.target.value)
     }
 
-    const DisplayData = (someData) => {
+    const handleClick = (dataObj) => {
+        console.log(dataObj);
+        setArticleData(dataObj);
+    }
+
+    const DisplayData = () => {
         return (
             <React.Fragment>
                 <BrowserRouter>
-                    <Header newsData={someData} changeData={(e) => handleChange(e)}/>
+                    <Header changeData={(e) => handleChange(e)}/>
                     <div className='page-cont'>
                         <Route path='/' exact  > 
                             {spinner ? <div className="loader">Loading...</div> 
@@ -126,32 +136,45 @@ const NewsApp = () => {
                         </Route>
                         <Route path='/top-news' exact > 
                             {spinner ? <div className="loader">Loading...</div> 
-                            :<CategoryPage newsData={someData} searchedInput={searchInput} />} 
+                            :<CategoryPage newsData={data} searchedInput={searchInput} />} 
                         </Route>
                         <Route path='/sport' exact  > 
                             {spinner ? <div className="loader">Loading...</div> 
-                            :<CategoryPage newsData={sportData} searchedInput={searchInput} />} 
+                            :<CategoryPage newsData={sportData} searchedInput={searchInput} categoryName={CATEGORIES_ARR[0]} isClicked={handleClick}/>} 
                         </Route>
                         <Route path='/health' exact  > 
                             {spinner ? <div className="loader">Loading...</div> 
-                            :<CategoryPage newsData={healthData} searchedInput={searchInput} />} 
+                            :<CategoryPage newsData={healthData} searchedInput={searchInput} categoryName={CATEGORIES_ARR[1]} isClicked={handleClick}/>} 
                         </Route>
                         <Route path='/science' exact  > 
                             {spinner ? <div className="loader">Loading...</div> 
-                            :<CategoryPage newsData={scienceData} searchedInput={searchInput} />} 
+                            :<CategoryPage newsData={scienceData} searchedInput={searchInput} categoryName={CATEGORIES_ARR[2]} isClicked={handleClick}/>} 
                         </Route>
                         <Route path='/technology' exact  > 
                             {spinner ? <div className="loader">Loading...</div> 
-                            :<CategoryPage newsData={technologyData} searchedInput={searchInput} />} 
+                            :<CategoryPage newsData={technologyData} searchedInput={searchInput} categoryName={CATEGORIES_ARR[3]} isClicked={handleClick}/>} 
                         </Route>
                         <Route path='/business' exact  > 
                             {spinner ? <div className="loader">Loading...</div> 
-                            :<CategoryPage newsData={businessData} searchedInput={searchInput} />} 
+                            :<CategoryPage newsData={businessData} searchedInput={searchInput} categoryName={CATEGORIES_ARR[4]} isClicked={handleClick}/>} 
                         </Route>
                         <Route path='/entertainment' exact  > 
                             {spinner ? <div className="loader">Loading...</div> 
-                            :<CategoryPage newsData={entertainmentData} searchedInput={searchInput} />} 
+                            :<CategoryPage newsData={entertainmentData} searchedInput={searchInput} categoryName={CATEGORIES_ARR[5]} isClicked={handleClick}/>} 
                         </Route>
+                        {}
+                        {   
+                            articleData.length > 0 
+                            ? <Route path={`/${articleData[0].categoryName}/${articleData[0].data.source.name}}`} exact  > 
+                                {spinner ? <div className="loader">Loading...</div> 
+                                :<ArticlePage articleData={articleData}  />} 
+                              </Route>
+                            : <div>y</div> 
+                        }
+                        {/* <Route path={`/${articleData[0].categoryName}/${articleData[0].data.source.name}}`} exact  > 
+                            {spinner ? <div className="loader">Loading...</div> 
+                            :<ArticlePage articleData={articleData}  />} 
+                        </Route> */}
                         {/* {spinner ? <div>loading...</div> : ''} */}
                     </div>
                     <Footer />
@@ -164,7 +187,7 @@ const NewsApp = () => {
 
     return (
         <div className='main-cont'>
-            {DisplayData(data)}
+            {DisplayData()}
         </div>
 
     );
