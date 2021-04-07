@@ -2,6 +2,7 @@ import React from 'react';
 import './article.css';
 import logoImage from '../img/logo-3.png';
 
+
 const Article = ({ data, categoryName, objClicked }) => {
 
     const [img, setImg] = React.useState(data.urlToImage);

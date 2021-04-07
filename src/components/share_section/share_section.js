@@ -3,6 +3,7 @@ import { FacebookShareButton, TwitterShareButton, WhatsappShareButton } from "re
 import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 import './share_section.css';
 
+
 const SYMBOL_SIZE = 25;
 
 const ShareSection = ({ dataUrl }) => {

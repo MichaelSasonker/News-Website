@@ -2,6 +2,7 @@ import React from 'react';
 import ArticleFooter from '../article_footer/article_footer';
 import './article_page.css';
 
+
 const ArticlePage = ({ articleData }) => {
 
     const [content, setContent] = React.useState(articleData[0].data.content.split(' '));

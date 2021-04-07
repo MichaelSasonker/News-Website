@@ -21,7 +21,6 @@ body {
     min-width: 60vw;
     font-family: 'RobotoReg';
     font-size: 14px;
-    /* background-image: linear-gradient(to bottom left ,#757F9A,#F2F2F2, #DBDBDB,  #EAEAEA); */
     background: #fefefe;
     position: relative;
 }

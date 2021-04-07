@@ -3,6 +3,7 @@ import Article from '../article/article';
 import { Link } from 'react-router-dom';
 import './carousel.css';
 
+
 const Carousel = ({ data, isClicked, categoryName }) => {
 
     const [currArticle, setCurrArticle] = React.useState(0);

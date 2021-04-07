@@ -1,6 +1,6 @@
 import React from 'react';
 import TableData from '../table_data/table_data';
-import './table_links.css'
+import './table_links.css';
 
 
 let counter = 1000;
@@ -33,7 +33,6 @@ const LinksTable = ({ dataProp }) => {
         }
 
     }, [flag]);
-
 
     return (
         <React.Fragment>

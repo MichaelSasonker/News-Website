@@ -3,6 +3,7 @@ import LinksTable from '../table_links/table_links';
 import GetData from '../utilities_functions/get_data_function';
 import './footer.css';
 
+
 const BASE_URL = `https://newsapi.org/v2/sources?&apiKey=9892ff9432704002b7131bcfd7769a39`;
 let counter = 100;
 

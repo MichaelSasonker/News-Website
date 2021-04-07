@@ -30,7 +30,7 @@ const CategoryPage = ({ newsData, searchedInput, categoryName, isClicked }) => {
             })}
 
         </div>
-    )
+    );
 }
 
 export default CategoryPage;

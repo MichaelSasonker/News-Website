@@ -1,13 +1,6 @@
 import React from 'react';
-import './table_data.css'
+import './table_data.css';
 
-// <a key={obj.name}
-//     href={obj.url} 
-//     target='_blank' 
-//     rel="noreferrer"
-// >
-//     {obj.name}
-// </a>
 
 const TableData = ({ dataTableProp }) => {
 

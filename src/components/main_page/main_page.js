@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Carousel from '../carousel/carousel';
 import './main_page.css';
 
-
 const MainPage = ({ newsData, categoryArr, isClicked }) => {
 
     const handleClick = (dataObj) => {

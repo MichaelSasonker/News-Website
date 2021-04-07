@@ -7,7 +7,6 @@ import ArticlePage from './article_page/article_page';
 import Footer from './footer/footer';
 import GetData from './utilities_functions/get_data_function';
 import GetDate from './utilities_functions/get_date_function';
-import UseLocalStorage from './utilities_functions/use_local_storage_function';
 
 import './news-app.css';
 
