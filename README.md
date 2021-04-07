@@ -1,7 +1,5 @@
 # News-Website
 
-## Description:
-
 ## Tasks:
 * Create templates for the pages.
 * Find an API/s.
@@ -11,22 +9,26 @@
 
 ### API:
 * Get the relavent data.
-*
+
 
 ### Utilities Function:
-* GetData
-* GetDate
-* LocalStorage
-*
+* GetData.
+* GetDate.
+* LocalStorage.
+
 
 ### Pages:
 * Main page.
 * News page.
-* Sport page.
-* Health Page.
-* Technology Page.
+* Category page.
 
 
 ### Components:
 * Nav-bar.
 * Carousel.
+* Input.
+* Article.
+* Header.
+* Footer.
+* Table.
+* Link.
