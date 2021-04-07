@@ -1,14 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
 import './article.css';
 import logoImage from '../img/logo-3.png';
-
-
-{/* <BrowserRouter>
-<Route path={`/${categoryName}/${obj.source.name}`}>
-
-</Route>
-</BrowserRouter> */}
 
 const Article = ({ data, categoryName, objClicked }) => {
 

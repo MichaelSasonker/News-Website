@@ -18,16 +18,15 @@ const Carousel = ({ data, isClicked, categoryName }) => {
                 ? data.map((obj,index) => {
                     if (index === currArticle) {
                         return (
-                            <div className="carousel">
+                            <div className="carousel" key={obj.source.name}>
                                 <div className="carouselInner" >
-                                    <div className="left" onClick={() => {currArticle > 0 && setCurrArticle(currArticle - 1);}}>
+                                    <div className="left" onClick={() => {currArticle > 0 && setCurrArticle(currArticle - 1)}}>
                                         <i className="fas fa-chevron-left"></i>
                                     </div>
                                     <Link to={`/${categoryName}/${obj.source.name}}`}>
                                         <Article data={obj} key={obj.source.name} objClicked={handleClicked} categoryName={categoryName}/>
-
                                     </Link>
-                                    <div className="right" onClick={() => {currArticle < data.length - 1 && setCurrArticle(currArticle + 1);}}>
+                                    <div className="right" onClick={() => {currArticle < data.length - 1 && setCurrArticle(currArticle + 1)}}>
                                         <i className="fas fa-chevron-right"></i>
                                     </div>
                                 </div>

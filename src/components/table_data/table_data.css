@@ -1,15 +1,22 @@
-td {
+.div {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: left;
 }
 
 li {
-    margin: 3px 4px;
+    margin: 3px 5px;
+    text-align: left;
+    width: max-content;
 }
-li a {
-    text-decoration: none;
+
+button {
     font-size: 9px;
     color: #526474;
+    background-color: #fefefe;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
 }

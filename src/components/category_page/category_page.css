@@ -1,0 +1,10 @@
+.data-disp {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 330px;
+    margin-top: 85px;
+    margin-left: 70px;
+}
+

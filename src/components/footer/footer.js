@@ -8,31 +8,31 @@ let counter = 100;
 
 const Footer = () => {
 
-    // const [sources, setSources] = React.useState([]);
+    const [sources, setSources] = React.useState([]);
 
-    // React.useEffect(() => {
-    //     (async () => {
-    //         try {
-    //             let respone = await GetData(BASE_URL);
-    //             setSources(respone.sources);
-    //         }
-    //         catch (err) {
-    //             console.log(err);
-    //         }
-    //     })();
+    React.useEffect(() => {
+        (async () => {
+            try {
+                let respone = await GetData(BASE_URL);
+                setSources(respone.sources);
+            }
+            catch (err) {
+                console.log(err);
+            }
+        })();
 
-    // }, []);
+    }, []);
 
     return (
         <div className='footer-cont'>
             <hr/>
             <div className='news-links'>
                 <h4>News Links</h4>
-                {/* {
+                {
                     sources.length > 0 
                     ? <LinksTable key={counter++} dataProp={sources} />
                     : null
-                } */}
+                }
                 
             </div>
         </div>

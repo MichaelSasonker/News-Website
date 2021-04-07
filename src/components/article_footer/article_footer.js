@@ -6,7 +6,6 @@ const ArticleFooter = ({ dataUrl }) => {
 
     return (
         <div>
-            {/* {dataUrl} */}
             <ShareSection dataUrl={dataUrl} />
         </div>
     );

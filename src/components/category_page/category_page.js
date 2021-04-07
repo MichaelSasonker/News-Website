@@ -1,7 +1,7 @@
 import React from 'react';
 import Article from '../article/article';
-import ArticlePage from '../article_page/article_page';
 import { Link } from 'react-router-dom';
+import './category_page.css';
 
 const CategoryPage = ({ newsData, searchedInput, categoryName, isClicked }) => {
 
@@ -15,8 +15,7 @@ const CategoryPage = ({ newsData, searchedInput, categoryName, isClicked }) => {
                 if (searchedInput === '') {
                     return (element);
                 }
-                else if (element.title.toLowerCase().includes(searchedInput.toLowerCase())) {
-                    //TODO display if no has result=> NO RESULT!!! 
+                else if (element.title.toLowerCase().startsWith(searchedInput.toLowerCase())) {
                     return (element);
                 }
             })

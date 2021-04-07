@@ -14,7 +14,6 @@ const Header = ({ changeData }) => {
         changeData(e);
     }
 
-
     return (
         <div className='header-cont'>
             <Link to='/'>
@@ -47,7 +46,7 @@ const Header = ({ changeData }) => {
                 </Link>
             </div>
             <div className='search-cont'>
-                <input className='search' type='text' value={inputText} onChange={(e) => handleChange(e)} />
+                <input className='search' type='text' placeholder='Serach' value={inputText} onChange={(e) => handleChange(e)} />
             </div>
         </div>
     );

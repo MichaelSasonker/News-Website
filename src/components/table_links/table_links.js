@@ -2,7 +2,11 @@ import React from 'react';
 import TableData from '../table_data/table_data';
 import './table_links.css'
 
+
+let counter = 1000;
+
 const LinksTable = ({ dataProp }) => {
+
     const [tableDataArr, setTableDataArr] = React.useState(dataProp);
     const [flag, setFlag] = React.useState(false);
 
@@ -36,17 +40,19 @@ const LinksTable = ({ dataProp }) => {
             <table className='footer-links'>
                 <tbody>
                     <tr className='table-row'>
-                        <ul>
-                            {
-                                flag 
-                                ? (tableDataArr.map(arr => {
-                                    return (
-                                        <TableData key={arr.name} dataTableProp={arr} />
-                                    );
-                                }))
-                                : <td><a href='#' >No Sources</a></td>
-                            }
-                        </ul>
+                        <td>
+                            <ul>
+                                {
+                                    flag 
+                                    ? (tableDataArr.map(arr => {
+                                        return (
+                                            <TableData key={counter++} dataTableProp={arr} />
+                                        );
+                                    }))
+                                    : <li><button>No Sources</button></li>
+                                }
+                            </ul>
+                        </td>
                     </tr>
                 </tbody>
             </table>

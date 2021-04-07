@@ -1,23 +1,13 @@
 a {
     text-decoration: none;
-}
-
-.data-disp {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: inherit;
-    width: inherit;
-    margin-top: 50px;
+    width: 1px;
 }
 
 .article-comp {
     height: 350px;
     width: 500px;
     color: #fff;
-    margin-left: 30%;
-    /* border: 0.5px solid rgba(15, 22, 29, 0.85); */
+    margin-left: 150px;
 }
 
 .img-cont {
@@ -56,5 +46,4 @@ a {
 
 .desc-cont {
     padding: 4px;
-
 }

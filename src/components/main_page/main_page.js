@@ -4,7 +4,7 @@ import Carousel from '../carousel/carousel';
 import './main_page.css';
 
 
-const MainPage = ({ newsData, searchedInput, categoryArr, isClicked }) => {
+const MainPage = ({ newsData, categoryArr, isClicked }) => {
 
     const handleClick = (dataObj) => {
         isClicked(dataObj);
@@ -15,13 +15,13 @@ const MainPage = ({ newsData, searchedInput, categoryArr, isClicked }) => {
             {
                 newsData.map((arrOfObj,index) => {
                     return (
-                        <React.Fragment >
+                        <React.Fragment key={categoryArr[index]}>
                             <Link to={`/${categoryArr[index]}`}>
                                 <h2 className='carousel-header'>{categoryArr[index].toUpperCase()}</h2>
                             </Link>
-                            <Carousel data={arrOfObj} isClicked={handleClick} categoryName={categoryArr[index]}/>
+                            <Carousel key={categoryArr[index]} data={arrOfObj} isClicked={handleClick} categoryName={categoryArr[index]}/>
                         </React.Fragment>
-                    )
+                    );
                 })
             }
         </div>
