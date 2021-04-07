@@ -14,7 +14,7 @@ import './news-app.css';
 const BASE_URL = `https://newsapi.org/v2/top-headlines?language=en`;
 const CATEGORY_URL = `https://newsapi.org/v2/top-headlines?language=en`;
 // const API_KEY =  `&apiKey=18d952814b5f465995b39e12e931f50e`;
-// const API_KEY = `&apiKey=9892ff9432704002b7131bcfd7769a39`;
+// const API_KEY = `&apiKey=9892ff9432704002b7131bcfd7769a39`
 // const API_KEY = `&apiKey=85316c83db2946349a3c90297fec2517`;
 const API_KEY = `&apiKey=37d5df8286fc4d1cb536b21f4fc17b7c`;
 
