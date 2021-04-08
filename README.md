@@ -10,18 +10,15 @@
 ### API:
 * Get the relavent data.
 
-
 ### Utilities Function:
 * GetData.
 * GetDate.
 * LocalStorage.
 
-
 ### Pages:
 * Main page.
 * News page.
 * Category page.
-
 
 ### Components:
 * Nav-bar.
